@@ -1,5 +1,5 @@
 PixelEditor is a lightweight image editing web application built using HTML, CSS, JavaScript, and React.
-It allows users to upload images, apply adjustments, choose background colors, reset edits, and download the final edited image in just one click.
+It allows users to upload images, apply adjustments, choose background colors, reset edits.
 
 🚀 Features
 
@@ -11,8 +11,7 @@ It allows users to upload images, apply adjustments, choose background colors, r
 
 🔄 Reset Button – Restore the original image instantly
 
-📥 Download as PNG – Save your edited image instantly
-
 ⚡ Fast, responsive, and beginner-friendly UI
 
 🛠️ Built with HTML, CSS, JS, React and html-to-image library
+

@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <header className="topbar">Photo Editor — React</header>
+      
       <div className="layout">
         <Toolbar
           bg={bg}

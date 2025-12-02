@@ -1,47 +1,51 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 
 const CardCanvas = forwardRef(({ bg, filter, textStyle, dateText, uploaded }, ref) => {
-  const [pos, setPos] = useState({ x: 150, y: 80 });
-  const [size, setSize] = useState({ w: 360, h: 280 });
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const [size, setSize] = useState({ w: 600, h: 520 });
 
   useImperativeHandle(ref, () => ({
     reset() {
-      setPos({ x: 150, y: 80 });
-      setSize({ w: 360, h: 280 });
+      setPos({ x: 0, y: 0 });
+      setSize({ w: 600, h: 520 });
     }
   }));
 
   return (
-    <div className="canvas">
-      <div
-        className="card"
-        style={{
-          left: pos.x,
-          top: pos.y,
-          width: size.w,
-          height: size.h,
-          background: bg,
-          filter: filter
-        }}
-      >
-        {uploaded && (
-          <img src={uploaded} className="card-img" alt="preview" />
-        )}
-
+    <div className="canvas-area">
+      <div className="canvas">
+        
         <div
-          className="card-text"
-          contentEditable
-          suppressContentEditableWarning
+          className="card"
           style={{
-            fontWeight: textStyle.bold ? "bold" : "",
-            fontStyle: textStyle.italic ? "italic" : "",
-            textDecoration: textStyle.underline ? "underline" : ""
+            width: size.w,
+            height: size.h,
+            background: bg,
+            filter: filter,
+            margin: "0 auto"
           }}
         >
-          What's on your mind?
+          {uploaded && (
+            <img src={uploaded} className="card-img" alt="preview" />
+          )}
+
+          <div
+            className="card-text"
+            contentEditable
+            suppressContentEditableWarning
+            style={{
+              fontWeight: textStyle.bold ? "bold" : "",
+              fontStyle: textStyle.italic ? "italic" : "",
+              textDecoration: textStyle.underline ? "underline" : ""
+            }}
+          >
+            What's on your mind?
+          </div>
+
+          {dateText && <p className="date">{dateText}</p>}
         </div>
 
-        {dateText && <p className="date">{dateText}</p>}
       </div>
     </div>
   );

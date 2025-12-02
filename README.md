@@ -15,3 +15,4 @@ It allows users to upload images, apply adjustments, choose background colors, r
 
 🛠️ Built with HTML, CSS, JS, React and html-to-image library
 
+

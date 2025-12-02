@@ -20,6 +20,28 @@ export default function Toolbar({
     onUpload(url);
   }
 
+  // --- Download handler ---
+  const handleDownload = () => {
+    // canvas ki ID jo CardCanvas.jsx me add karenge: "cardCanvas"
+    const canvas = document.getElementById("cardCanvas");
+    if (!canvas) {
+      alert("Canvas nahi mila — ensure karo CardCanvas.jsx me canvas ka id 'cardCanvas' hai.");
+      return;
+    }
+
+    // image data
+    const image = canvas.toDataURL("image/png");
+
+    // create link and click to download
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "pixel_image.png";
+    // for firefox, append link to body first
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <aside className="toolbar">
 
@@ -97,6 +119,14 @@ export default function Toolbar({
           onChange={handleFile}
           style={{ display: "none" }}
         />
+      </div>
+
+      {/* Download */}
+      <div className="tool-section">
+        <h3>Export</h3>
+        <button className="downloadBtn" onClick={handleDownload}>
+          Download Image
+        </button>
       </div>
 
       {/* Reset */}

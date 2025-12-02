@@ -8,6 +8,10 @@ export default function App() {
   const [textStyle, setTextStyle] = useState({ bold: false, italic: false, underline: false });
   const [dateText, setDateText] = useState("");
   const [uploaded, setUploaded] = useState(null);
+
+  // NEW — caption text state
+  const [caption, setCaption] = useState("What's on your mind?");
+
   const cardRef = useRef();
 
   const resetAll = () => {
@@ -16,13 +20,14 @@ export default function App() {
     setTextStyle({ bold: false, italic: false, underline: false });
     setDateText("");
     setUploaded(null);
+    setCaption("What's on your mind?");
     if (cardRef.current) cardRef.current.reset();
   };
 
   return (
     <div className="app">
-      
       <div className="layout">
+
         <Toolbar
           bg={bg}
           setBg={setBg}
@@ -35,6 +40,7 @@ export default function App() {
           onUpload={(fileUrl) => setUploaded(fileUrl)}
           resetAll={resetAll}
         />
+
         <CardCanvas
           ref={cardRef}
           bg={bg}
@@ -42,7 +48,10 @@ export default function App() {
           textStyle={textStyle}
           dateText={dateText}
           uploaded={uploaded}
+          caption={caption}          // send caption text
+          setCaption={setCaption}    // send setter to update
         />
+
       </div>
     </div>
   );
